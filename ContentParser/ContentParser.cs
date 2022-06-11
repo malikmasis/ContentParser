@@ -52,8 +52,8 @@ public class ContentParser
             }
         }
 
-        var pollNames = Regex.Matches(content, @"(?<=PollName="")(.*?)(?="")").Select(p => p.Value).ToList();
-        var polls = Regex.Matches(content, @"(?<=Widget Type="")(.*?)(?="")").Select(p => p.Value).ToList();
+        var pollNames = Regex.Matches(content, @"(?<=PollName\s*=\s*"")(.*?)(?="")").Select(p => p.Value).ToList();
+        var polls = Regex.Matches(content, @"(?<=Widget Type\s*=\s*"")(.*?)(?="")").Select(p => p.Value).ToList();
 
         List<string> contentFragments = new();
         for (int i = 0, k = 0; i < parsedList.Count; i++)

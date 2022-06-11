@@ -15,7 +15,21 @@ namespace ContentParser.UnitTest
             var contentFragments = await contentParser.ParseAsync(content);
 
             Assert.NotNull(contentFragments);
-            Assert.Equal(contentFragments.Count, expectedLine);
+            Assert.Equal(expectedLine, contentFragments.Count);
+        }
+
+        [Fact]
+        public async Task ParseAsync_ShouldWorkWithWrongConfigOptions()
+        {
+            var content = @"**ABP Framework** is completely open source and developed in a community-driven manner.
+                        [Widget Type=  ""Poll"" PollName =""poll-name""]
+                        Thanks _for_ *your * feedback.";
+
+            ContentParser contentParser = new();
+            var contentFragments = await contentParser.ParseAsync(content);
+
+            Assert.NotNull(contentFragments);
+            Assert.Equal(3, contentFragments.Count);
         }
 
         public static IEnumerable<object[]> ExampleData =>
