@@ -46,7 +46,7 @@ public class ContentParser
                 replacedText = replacedText.Substring(index, replacedText.Length - index);
 
             }
-            else
+            else if(replacedText.Length > 0)
             {
                 parsedList.Add(replacedText);
             }
