@@ -58,9 +58,9 @@ public class ContentParser
         List<string> contentFragments = new();
         for (int i = 0, k = 0; i < parsedList.Count; i++)
         {
-            if (polls.Count > k)
+            if (parsedList[i] == delimeter)
             {
-                if (parsedList[i] == delimeter)
+                if (polls.Count > k)
                 {
                     var name = _options.FirstOrDefault(p => p == polls[k]);
                     if (name is not null && pollNames.Count > k)
